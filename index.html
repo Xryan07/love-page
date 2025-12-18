@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Three Months 🌙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root {
+  --bg1: #ffe6f0;
+  --bg2: #fff0f8;
+  --card: rgba(255,255,255,0.95);
+  --text-main: #4b3a38;
+  --text-soft: #8a6a66;
+  --accent: #d88c9a;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(120deg, var(--bg1), var(--bg2));
+  font-family:'Segoe UI',system-ui,sans-serif;
+  color: var(--text-main);
+  overflow:hidden;
+  position:relative;
+}
+.background-orb{
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:rgba(255,200,220,0.6);
+  border-radius:50%;
+  filter:blur(5px);
+  animation:float 20s linear infinite;
+  z-index:0;
+}
+@keyframes float{
+  0%{transform:translate(0,0) scale(0.6);}
+  50%{transform:translate(50vw,50vh) scale(1);}
+  100%{transform:translate(0,100vh) scale(0.6);}
+}
+.card{
+  width:min(420px,92vw);
+  padding:40px 36px 46px;
+  background:var(--card);
+  border-radius:28px;
+  box-shadow:0 25px 55px rgba(216,140,154,0.25);
+  text-align:center;
+  position:relative;
+  backdrop-filter:blur(6px);
+  z-index:1;
+  animation:fadeIn 1.6s ease forwards;
+}
+h1{
+  margin:0 0 12px;
+  font-weight:600;
+  letter-spacing:.4px;
+  color: var(--accent);
+}
+.subtitle{
+  font-size:14px;
+  line-height:1.8;
+  color: var(--text-soft);
+  margin-bottom:28px;
+  opacity:0;
+  animation:appear 1.2s ease forwards;
+  animation-delay:1.2s;
+}
+.line{
+  min-height:28px;
+  font-size:18px;
+  margin-bottom:18px;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.line.show{opacity:1; transform:translateY(0);}
+.final{
+  margin-top:28px;
+  font-size:15px;
+  color: var(--text-soft);
+  opacity:0;
+  animation:appear 2s ease forwards;
+  animation-delay:22s;
+}
+.marathi-love{
+  margin-top:10px;
+  font-size:16px;
+  color: var(--accent);
+  opacity:0;
+  animation:appear 2s ease forwards;
+  animation-delay:24s;
+}
+.heart{
+  margin-top:22px;
+  font-size:24px;
+  opacity:.85;
+  animation:pulse 2.8s infinite ease-in-out;
+  cursor:pointer;
+  z-index:2;
+}
+@keyframes fadeIn{from{opacity:0; transform:scale(.98);}to{opacity:1; transform:scale(1);}}
+@keyframes appear{from{opacity:0;}to{opacity:1;}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+.dust span{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:rgba(200,200,255,0.7);
+  border-radius:50%;
+  animation:drift 10s infinite ease-in-out;
+  z-index:0;
+}
+@keyframes drift{0%,100%{transform:translateY(0);opacity:.3;}50%{transform:translateY(-14px);opacity:.8;}}
+.petal{
+  position:absolute;
+  width:16px;
+  height:8px;
+  background:linear-gradient(45deg, rgba(216,140,154,0.8), rgba(255,200,210,0.5));
+  border-radius:50%;
+  filter:drop-shadow(0 0 3px rgba(216,140,154,0.6));
+  animation:fall linear infinite;
+  z-index:0;
+}
+@keyframes fall{from{transform:translateY(-50px) rotate(0deg);}to{transform:translateY(120vh) rotate(360deg);}}
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:0.9;
+  box-shadow:0 0 6px white;
+  animation:twinkle 3s infinite ease-in-out;
+  z-index:0;
+}
+@keyframes twinkle{0%,100%{opacity:.3;}50%{opacity:1;}}
+</style>
+</head>
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://raw.githubusercontent.com/Xryan07/romantic-music/main/se_orita_instrumental.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<div class="dust" id="dust"></div>
+<div class="card">
+<h1>Three Months 🌙</h1>
+<div class="subtitle">Nothing here asked for effort. Nothing tried to impress. It just stayed — the way calm things do, Chiuuu Babby.</div>
+<div class="line" id="l1">I didn’t fall all at once… BabbyGirll</div>
+<div class="line" id="l2">You happened to me — slowly, Babby.</div>
+<div class="line" id="l3">In small moments I didn’t notice, Mamm Jii.</div>
+<div class="line" id="l4">Until you felt permanent, Darlingg.</div>
+<div class="line" id="l5">Three months… and I still stay, Honeyy.</div>
+<div class="line" id="l6">Not out of habit. Out of love, SweetHeart.</div>
+<div class="line" id="l7">You are my calm, my peace, my heart, Pookie, Chaituu, Sahibaaa, MyLove, MyGirll.</div>
+<div class="final">You didn’t need to prove anything. Being you is already enough 💗</div>
+<div class="marathi-love">Mi tuzya var prem karto 💗</div>
+<div class="heart" id="heart">💗</div>
+</div>
+
+<script>
+// cinematic lines
+const lines=document.querySelectorAll('.line');
+lines.forEach((line,i)=>{setTimeout(()=>line.classList.add('show'),3000+i*2600);});
+
+// floating dust
+const dust=document.getElementById('dust');
+for(let i=0;i<40;i++){
+ const s=document.createElement('span');
+ s.style.left=Math.random()*100+'vw';
+ s.style.top=Math.random()*100+'vh';
+ s.style.animationDelay=Math.random()*10+'s';
+ dust.appendChild(s);
+}
+
+// floating petals
+for(let i=0;i<20;i++){
+ const p=document.createElement('div');
+ p.className='petal';
+ p.style.left=Math.random()*100+'vw';
+ p.style.animationDuration=(10+Math.random()*10)+'s';
+ document.body.appendChild(p);
+}
+
+// twinkling stars
+for(let i=0;i<30;i++){
+ const st=document.createElement('div');
+ st.className='star';
+ st.style.left=Math.random()*100+'vw';
+ st.style.top=Math.random()*100+'vh';
+ st.style.animationDelay=Math.random()*3+'s';
+ document.body.appendChild(st);
+}
+
+// floating background orbs (firefly effect)
+for(let i=0;i<25;i++){
+ const orb=document.createElement('div');
+ orb.className='background-orb';
+ orb.style.left=Math.random()*100+'vw';
+ orb.style.top=Math.random()*100+'vh';
+ orb.style.animationDuration=(15+Math.random()*15)+'s';
+ orb.style.animationDelay=Math.random()*5+'s';
+ document.body.appendChild(orb);
+}
+
+// heart tap animation
+const heart=document.getElementById('heart');
+heart.addEventListener('click',(e)=>{
+ const h=document.createElement('div');
+ h.textContent='💗';
+ h.style.position='absolute';
+ h.style.left=e.clientX+'px';
+ h.style.top=e.clientY+'px';
+ h.style.fontSize='18px';
+ h.style.pointerEvents='none';
+ h.style.opacity='1';
+ h.style.transition='all 1.2s ease-out';
+ document.body.appendChild(h);
+ setTimeout(()=>{h.style.top=(e.clientY-120)+'px'; h.style.opacity='0';},50);
+ setTimeout(()=>h.remove(),1250);
+});
+</script>
+</body>
+</html>
